@@ -114,7 +114,6 @@ const main = async () => {
         format.forEach((f, i) => {
             writeFileSync(`output/dokidoki${i + 1}.txt`, f.join("\n"));
         });
-        // writeFileSync("output/dokidoki.txt", result);
     } catch (e) {
         console.error(e);
     }
