@@ -85,16 +85,20 @@ const kanalist = [
 ];
 
 const main = () => {
-    const result = kanalist.slice(0, 1).map((first, fi) => {
-        const inner = kanalist
-            .filter((_, i) => i !== fi)
-            .map((second) => {
-                const text = `${first}ー${second}` + (first + second).repeat(7);
-                return text;
-            });
-        return inner;
-    });
-    console.log(result.join("\n"));
+    const result = kanalist
+        .slice(0, 1)
+        .map((first, fi) => {
+            const inner = kanalist
+                .filter((_, i) => i !== fi)
+                .map((second) => {
+                    const text = `${first}ー${second}` + (first + second).repeat(7);
+                    return text;
+                })
+                .join("\n");
+            return inner;
+        })
+        .join("\n");
+    console.log(result);
 };
 
 main();
