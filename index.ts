@@ -100,8 +100,21 @@ const main = async () => {
         })
         .join("\n");
 
+    const split = result.split("\n");
+    const format = [
+        split.slice(0, 900),
+        split.slice(900, 1800),
+        split.slice(1800, 2700),
+        split.slice(2700, 3600),
+        split.slice(3600, 4500),
+        split.slice(4500, 5400),
+    ];
+
     try {
-        writeFileSync("output/dokidoki.txt", result);
+        format.forEach((f, i) => {
+            writeFileSync(`output/dokidoki${i + 1}.txt`, f.join("\n"));
+        });
+        // writeFileSync("output/dokidoki.txt", result);
     } catch (e) {
         console.error(e);
     }
