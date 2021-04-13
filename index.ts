@@ -1,3 +1,5 @@
+import { writeFileSync } from "fs";
+
 const kanalist = [
     // "ぁ",
     "あ",
@@ -84,9 +86,8 @@ const kanalist = [
     "ん",
 ];
 
-const main = () => {
+const main = async () => {
     const result = kanalist
-        .slice(0, 1)
         .map((first, fi) => {
             const inner = kanalist
                 .filter((_, i) => i !== fi)
@@ -98,7 +99,12 @@ const main = () => {
             return inner;
         })
         .join("\n");
-    console.log(result);
+
+    try {
+        writeFileSync("output/dokidoki.txt", result);
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 main();
